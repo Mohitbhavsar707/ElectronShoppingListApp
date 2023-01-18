@@ -1,0 +1,22 @@
+{
+  "name": "electronshoppinglistapp",
+  "version": "1.0.0",
+  "description": "Shopping List Application ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohitbhavsar707/ElectronShoppingListApp.git"
+  },
+  "author": "Mohit Bhavsar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohitbhavsar707/ElectronShoppingListApp/issues"
+  },
+  "homepage": "https://github.com/Mohitbhavsar707/ElectronShoppingListApp#readme",
+  "dependencies": {
+    "electron": "^22.0.2"
+  }
+}
