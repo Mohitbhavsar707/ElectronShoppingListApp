@@ -8,30 +8,17 @@ let mainWindow;
 let addWindow;
 
 // Listen for app to be ready
-
 app.on('ready', function(){
-    
-
-    // Handle create add window
-    function createAddWindow(){
-        //Create new window
-    addWindow = new BrowserWindow({
-        width: 200,
-        height: 300,
-        title: 'Add Shopping List Item'
-    });
+    //Create new window
+    mainWindow = new BrowserWindow({});
     autoHideMenuBar: false
-
     //Load html into window
     mainWindow.loadURL(url.format({
-
         //passes in file: //dirname/mainWindow.html path into loadurl
-        pathname: path.join(__dirname, 'addWindow.html'),
+        pathname: path.join(__dirname, 'mainWindow.html'),
         protocol:'file:',
         slashes: true
     }));
-
-    }
 
     //Build menu from template
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
@@ -41,6 +28,29 @@ app.on('ready', function(){
     console.log(mainMenu)
 
 });
+
+
+//Handle create add window
+
+function createAddWindow(){
+    //Create new window
+    addWindow = new BrowserWindow({
+        width: 200,
+        height: 300,
+        title: 'Add Shopping List Item'
+    });
+    autoHideMenuBar: false
+    //Load html into window
+    mainWindow.loadURL(url.format({
+        //passes in file: //dirname/mainWindow.html path into loadurl
+        pathname: path.join(__dirname, 'addWindow.html'),
+        protocol:'file:',
+        slashes: true
+    }));
+
+}
+
+
 
 //Create menu template
 
