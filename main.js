@@ -12,4 +12,11 @@ app.on('ready', function(){
     //Create new window
     mainWindow = new BrowserWindow({});
     //Load html into window
-})
+    mainWindow.loadURL(url.format({
+
+        //passes in file: //dirname/mainWindow.html path into loadurl
+        pathname: path.join(__dirname, 'mainWindow.html'),
+        protocal: 'file',
+        slashes: true
+    }));
+});
