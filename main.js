@@ -35,8 +35,8 @@ app.on('ready', function(){
 function createAddWindow(){
     //Create new window
     addWindow = new BrowserWindow({
-        width: 200,
-        height: 300,
+        width: 300,
+        height: 200,
         title: 'Add Shopping List Item'
     });
     autoHideMenuBar: false
