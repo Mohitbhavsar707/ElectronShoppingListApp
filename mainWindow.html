@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <title>Shopping List App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 <body>
     <h1>ShoppingList</h1>
@@ -24,6 +26,13 @@
         ipcRenderer.on('item:clear', function(){
              ul.innerHTML = '';
         });
+
+        // Remove item
+        ul.addEventListener('dblclick', removeItem);
+
+        function removeItem(e){
+            e.target.remove();
+        }
 
     </script>
 
