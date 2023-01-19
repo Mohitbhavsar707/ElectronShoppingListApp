@@ -30,7 +30,7 @@ app.on('ready', function(){
 
     //Insert menu
     Menu.setApplicationMenu(mainMenu);
-    console.log(mainMenu)
+    //console.log(mainMenu)
 
 });
 
@@ -64,9 +64,10 @@ function createAddWindow(){
 //Create menu template
 
 const mainMenuTemplate = [
+    
     {
-        label: 'File',
-        submenu: [
+        label:'File',
+        submenu:[
             {
                 label: 'Add Item',
                 click(){
@@ -85,6 +86,31 @@ const mainMenuTemplate = [
             }
         ]
     }
+
+    
 ];
 
+//if mac, then add an empty object to the menu
 
+// if (process.platform == 'darwin') {
+//     mainMenuTemplate.unshift({label: ''});
+// }
+
+
+if (process.env.NODE_ENV !== 'production'){
+    mainMenuTemplate.push({
+        label: 'Developer Tools', 
+        submenu:[
+            {
+                label: 'Toggle DevTools',
+                accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
+                click(item, focusedWindow){
+                    focusedWindow.toggleDevTools();
+                }
+            },
+            {
+                role: 'reload'
+            }
+        ]
+    });
+}
