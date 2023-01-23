@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shopping List App</title>
+    <title>NavXUi Application</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 </head>
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a class="brand-logo center">Shopping List</a>
+            <a class="brand-logo center">NavXUi Application</a>
         </div>
     </nav>
     <ul></ul>
@@ -20,7 +20,9 @@
 
         //add item
         ipcRenderer.on('item:add', function(e, item){
+            ul.className = 'collection';
             const li = document.createElement('li');
+            li.className = 'collection-item';
             const itemText = document.createTextNode(item);
             li.appendChild(itemText);
             ul.appendChild(li);
@@ -29,6 +31,7 @@
         //clear item
         ipcRenderer.on('item:clear', function(){
              ul.innerHTML = '';
+             ul.className = ''; 
         });
 
         // Remove item
@@ -36,9 +39,58 @@
 
         function removeItem(e){
             e.target.remove();
+            if(ul.children.length == 0){
+                ul.className = '';
+            }
         }
 
     </script>
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShoppingList</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo center">Shopping List</a>   
+    </div>
+  </nav>
+  <ul></ul>
+
+  <script>
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
+    const ul = document.querySelector('ul');
+
+    ipcRenderer.on('item:add', function(e, item){
+      ul.className = 'collection';
+      const li = document.createElement('li');
+      li.className = 'collection-item';
+      const itemText = document.createTextNode(item);
+
+      li.appendChild(itemText);
+      ul.appendChild(li);
+    });
+
+    ipcRenderer.on('item:clear', function(){
+      ul.className = '';
+      ul.innerHTML = '';
+    });
+
+    ul.addEventListener('dblclick', removeItem);
+
+    function removeItem(e){
+      event.target.remove();
+      if(ul.children.length == 0){
+        ul.className = '';
+      }
+    }
+  </script>
 </body>
 </html>
